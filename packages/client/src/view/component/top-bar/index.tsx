@@ -39,7 +39,7 @@ class TopBarClass extends PureComponent<TopBarProps> {
       <div className={classes.root}>
         <AppBar position="fixed" className={classes.appBar}>
           <div className={classes.appBarContent}>
-            Capitolis
+            Capitolis - Forgein Exchange Positions
           </div>
         </AppBar>
       </div>

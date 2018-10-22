@@ -36,6 +36,7 @@ const styles = (theme: Theme) => createStyles({
   },
   horizontalContainer: {
     width: '800px',
+    maxWidth: '90vw',
   },
   verticalContainer: {
     height: '500px',
