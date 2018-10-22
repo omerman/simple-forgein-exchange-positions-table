@@ -19,6 +19,10 @@ export const headers: IHeader[] = [
     label: 'Rate',
   },
   {
+    key: 'currency',
+    label: 'Currency',
+  },
+  {
     key: 'calculatedValue',
     label: 'Calculated Value (in USD)',
   },

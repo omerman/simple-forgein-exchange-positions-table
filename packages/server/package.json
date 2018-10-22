@@ -18,11 +18,13 @@
     "express-http-proxy": "^1.2.0",
     "express-session": "^1.15.2",
     "graphql": "^0.13.2",
+    "node-fetch": "^2.2.0",
     "uuid": "^3.3.2"
   },
   "devDependencies": {
     "@types/express-graphql": "^0.6.1",
     "@types/graphql": "^0.13.3",
+    "@types/node-fetch": "^2.1.2",
     "mime": "^2.3.1",
     "scripts": "1.0.0",
     "typeorm": "^0.2.7"

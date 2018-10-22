@@ -1,15 +1,19 @@
 import { Router } from 'express';
+import { ratesManager } from 'src/rates-manager';
 
 export const foreignExchangePositionsRouter = Router();
 
 foreignExchangePositionsRouter.get('/', (req, res) => {
-  res.json([
-    {
-      id: '1',
-      name: 'Omer Test',
-      notionalValue: 3,
-      rate: 'EUR',
-      calculatedValue: 15,
-    },
-  ]);
+  ratesManager.get().then((rates) => {
+    res.json([
+      {
+        id: '1',
+        name: 'Omer Test',
+        notionalValue: 3,
+        rate: rates.EUR,
+        currency: 'EUR',
+        calculatedValue: 15,
+      },
+    ]);
+  });
 });

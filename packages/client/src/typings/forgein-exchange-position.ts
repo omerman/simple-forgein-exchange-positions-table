@@ -2,6 +2,7 @@ export interface IForgeinExchangePosition {
   id: string,
   name: string,
   notionalValue: number,
-  rate: string,
+  rate: number,
+  currency: string,
   calculatedValue: number,
 }
