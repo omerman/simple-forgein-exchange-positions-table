@@ -77,7 +77,7 @@ export class LocalDataTable<T> implements IDataTable<T> {
   }
 
   private static search<T>(data: T[], phrase: string = '') {
-    const trimmedPhrase = phrase.trim();
+    const trimmedPhrase = phrase.trim().toLowerCase();
 
     if (!trimmedPhrase) {
       return data;
@@ -85,7 +85,7 @@ export class LocalDataTable<T> implements IDataTable<T> {
 
     return data.filter(dataRow => (
       Object.values(dataRow).some(cellValue => (
-        String(cellValue).includes(phrase)
+        String(cellValue).toLowerCase().includes(phrase)
       ))
     ));
   }
