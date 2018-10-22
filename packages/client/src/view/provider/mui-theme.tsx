@@ -1,5 +1,6 @@
 import React, { PureComponent } from 'react';
 import teal from '@material-ui/core/colors/teal';
+import grey from '@material-ui/core/colors/grey';
 import PropTypes from 'prop-types';
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 import { mobileDetect } from 'client/src/view/common/mobile-detect';
@@ -7,6 +8,7 @@ import { mobileDetect } from 'client/src/view/common/mobile-detect';
 const theme = createMuiTheme({
   palette: {
     primary: teal,
+    secondary: grey,
   },
   overrides: {
     MuiInputLabel: {
@@ -32,7 +34,7 @@ const theme = createMuiTheme({
       },
       toolbar: {
         paddingLeft: 0,
-        justifyContent: 'flex-start',
+        justifyContent: 'flex-end',
       },
     },
     MuiIconButton: {
