@@ -2,10 +2,9 @@ import React from 'react';
 import {
   WithStyles, withStyles, createStyles, Theme,
 } from '@material-ui/core';
-import { JobsDataTable } from 'client/src/view/container/jobs-data-table';
-import { SecondaryRoutings } from 'client/src/view/container/secondary-routings';
 import { MainRoute } from 'client/src/view/component/common/main-route';
 import { Add } from 'client/src/view/component/common/button/add';
+import { ForeginExchangePositionTable } from 'client/src/view/container/home/forgein-exchange-position-table';
 
 const styles = (theme: Theme) => createStyles({
   bottomActions: {
@@ -27,7 +26,7 @@ export const Home = withStyles(styles)(
   ({ classes }: HomeProps) => (
     <MainRoute>
       <div>
-        Hello Boilerplate :)
+        <ForeginExchangePositionTable />
       </div>
     </MainRoute>
   ),
