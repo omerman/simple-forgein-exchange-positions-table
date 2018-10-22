@@ -6,7 +6,7 @@ import { mainRouter } from './router';
 
 
 const app: Application = createApp();
-app.use('api', mainRouter);
+app.use('/api', mainRouter);
 
 
 module.exports = {

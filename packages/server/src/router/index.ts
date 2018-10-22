@@ -1,7 +1,7 @@
 import { Router } from 'express';
-import { foreignExchangeRouter } from 'src/router/foreign-exchange';
+import { foreignExchangePositionsRouter } from 'src/router/foreign-exchange-positions';
 
 const mainRouter = Router();
-mainRouter.use('/fx', foreignExchangeRouter);
+mainRouter.use('/fxp', foreignExchangePositionsRouter);
 
 export { mainRouter };

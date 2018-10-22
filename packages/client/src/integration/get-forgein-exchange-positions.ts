@@ -1,13 +1,6 @@
 import { IForgeinExchangePosition } from 'client/src/typings/forgein-exchange-position';
 
 export const getForgeinExchangePositions = (): Promise<IForgeinExchangePosition[]> => (
-  Promise.resolve([
-    {
-      id: '1',
-      name: 'Omer Test',
-      notionalValue: 3,
-      rate: 'EUR',
-      calculatedValue: 15,
-    },
-  ])
+  // Assuming there are no errors in the world offcourse.
+  fetch('api/fxp/').then(response => response.json())
 );
