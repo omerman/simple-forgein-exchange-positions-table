@@ -1,0 +1,51 @@
+{
+  "name": "client",
+  "private": true,
+  "version": "1.0.0",
+  "description": "",
+  "main": "index",
+  "scripts": {
+    "build": "node ./bin/run-build",
+    "start": "node ./bin/mock/bin/start",
+    "start:all": "node ./bin/start",
+    "start:debug": "node --inspect-brk ./bin/start",
+    "typecheck": "tsc"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@material-ui/core": "^1.5.0",
+    "@material-ui/icons": "^2.0.3",
+    "@types/classnames": "^2.2.6",
+    "@types/prop-types": "^15.5.3",
+    "@types/react": "^16.4.6",
+    "@types/react-dom": "^16.0.6",
+    "@types/router5": "^5.0.0",
+    "classnames": "^2.2.6",
+    "computed-async-mobx": "^4.1.0",
+    "date-fns": "2.0.0-alpha.16",
+    "material-ui": "^1.0.0-beta.47",
+    "material-ui-pickers": "^1.0.0-rc.14",
+    "mobile-detect": "^1.4.2",
+    "mobx": "^5.0.3",
+    "mobx-react": "^5.2.3",
+    "mobx-router": "^0.0.13",
+    "mobx-router5": "^4.2.2",
+    "mobx-utils": "^5.0.2",
+    "prop-types": "^15.6.0",
+    "react": "^16.4.2",
+    "react-dom": "^16.4.2",
+    "react-mobx-router5": "^6.1.1",
+    "react-virtualized": "^9.20.1",
+    "router5": "^6.4.2"
+  },
+  "devDependencies": {
+    "express": "^4.16.3",
+    "express-graphql": "^0.6.12",
+    "graphql": "^0.13.2",
+    "graphql-tag": "^2.9.2",
+    "react-hot-loader": "^4.3.4",
+    "scripts": "1.0.0",
+    "server": "1.0.0"
+  }
+}
