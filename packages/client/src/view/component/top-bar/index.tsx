@@ -23,9 +23,6 @@ const styles = (theme: Theme) => createStyles({
   },
   logo: {
   },
-  hr: {
-    margin: 0,
-  },
 });
 
 interface TopBarProps extends WithStyles<typeof styles> {
@@ -44,7 +41,6 @@ class TopBarClass extends PureComponent<TopBarProps> {
           <div className={classes.appBarContent}>
             Capitolis
           </div>
-          <hr className={classes.hr} />
         </AppBar>
       </div>
     );
