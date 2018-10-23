@@ -1,5 +1,5 @@
 import { ITableHeadRow } from 'client/src/view/component/common/table/typings';
-import { IForgeinExchangePosition } from 'client/src/typings/forgein-exchange-position';
+import { IForgeinExchangePosition } from 'server/dist/sharedTypings';
 
 interface IHeader extends ITableHeadRow {
   key: keyof IForgeinExchangePosition,

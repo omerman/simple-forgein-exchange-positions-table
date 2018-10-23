@@ -1,19 +1,33 @@
 import { Router } from 'express';
 import { ratesManager } from 'src/rates-manager';
+import { finantialUnitsManager } from 'src/finantial-units-manager';
+import { positionsManager } from 'src/positions-manager';
+import { IForgeinExchangePosition } from 'src/shared-typings';
 
 export const foreignExchangePositionsRouter = Router();
 
-foreignExchangePositionsRouter.get('/', (req, res) => {
-  ratesManager.get().then((rates) => {
-    res.json([
-      {
-        id: '1',
-        name: 'Omer Test',
-        notionalValue: 3,
-        rate: rates.EUR,
-        currency: 'EUR',
-        calculatedValue: 15,
-      },
-    ]);
+foreignExchangePositionsRouter.get('/', async (req, res) => {
+  const [rates, finantialUnits, positions] = await Promise.all([
+    ratesManager.get(),
+    finantialUnitsManager.get(),
+    positionsManager.get(),
+  ]);
+
+  const calculatedValue: IForgeinExchangePosition[] = positions.map((position) => {
+    const finantialUnit = finantialUnits.find(fu => position.fuOriginId === fu.id);
+
+    return {
+      id: position.id,
+      name: finantialUnit.name,
+      notionalValue: position.data.currency.notionalValue,
+      rate: rates[position.data.currency.ccy],
+      currency: position.data.currency.ccy,
+      calculatedValue: (
+        position.data.currency.notionalValue * rates[position.data.currency.ccy]
+      ),
+    };
   });
+
+
+  res.json(calculatedValue);
 });

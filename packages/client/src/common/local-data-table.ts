@@ -85,7 +85,7 @@ export class LocalDataTable<T> implements IDataTable<T> {
 
     return data.filter(dataRow => (
       Object.values(dataRow).some(cellValue => (
-        String(cellValue).toLowerCase().includes(phrase)
+        String(cellValue).toLowerCase().includes(trimmedPhrase)
       ))
     ));
   }

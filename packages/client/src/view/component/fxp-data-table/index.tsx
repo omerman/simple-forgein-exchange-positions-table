@@ -1,5 +1,4 @@
 import React from 'react';
-import { IForgeinExchangePosition } from 'client/src/typings/forgein-exchange-position';
 import { Table } from 'client/src/view/component/common/table';
 import {
   TOnOrderChange,
@@ -12,6 +11,7 @@ import {
 import { TableDataRow } from 'client/src/view/component/common/table/table-data-row';
 import { TableDataCell } from 'client/src/view/component/common/table/table-data-cell';
 import { TOnValueChange as TOnSearch } from 'client/src/view/component/common/search-bar/typings';
+import { IForgeinExchangePosition } from 'server/dist/sharedTypings';
 import { headers } from './headers';
 
 export interface IForgeinExchangePositionTableProps {

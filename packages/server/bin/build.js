@@ -10,6 +10,7 @@ module.exports = new Build({
   isClient: false,
   entry: {
     app: path.resolve(rootPath, 'src', 'index'),
+    sharedTypings: path.resolve(rootPath, 'src', 'shared-typings', 'index'),
   },
   outputDir: path.resolve(__dirname, '..', 'dist'),
 });

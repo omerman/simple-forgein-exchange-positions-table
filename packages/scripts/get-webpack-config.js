@@ -1,7 +1,7 @@
 const webpack = require('webpack');
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-// const TsDeclarationWebpackPlugin = require('ts-declaration-webpack-plugin');
+const TsDeclarationWebpackPlugin = require('ts-declaration-webpack-plugin');
 const nodeExternals = require('webpack-node-externals');
 
 const defaultExtensions = ['.js', '.jsx', '.ts', '.tsx'];
@@ -87,7 +87,7 @@ const getWebpackConfig = ({
       libraryTarget: 'umd',
     },
     plugins: [
-      // new TsDeclarationWebpackPlugin(),
+      new TsDeclarationWebpackPlugin(),
       new webpack.DefinePlugin(Object.assign({
         __PROD__: isClient ? JSON.stringify(isProd) : 'process.env.NODE_ENV',
         __DEV__: isClient ? JSON.stringify(!isProd) : '!process.env.NODE_ENV',
