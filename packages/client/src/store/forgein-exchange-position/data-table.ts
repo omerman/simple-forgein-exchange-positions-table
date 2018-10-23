@@ -5,7 +5,6 @@ import { IForgeinExchangePosition } from 'server/dist/sharedTypings';
 
 export class ForgeinExchangePositionTableStore
   extends DataTableStore<IForgeinExchangePosition> {
-
   constructor(page: number = 0, rowsPerPage: number = 25) {
     super(
       new LocalDataTable({
