@@ -65,6 +65,7 @@ export const ForgeinExchangePositionTable = (
       onToggleFilter={onToggleFilter}
       onSearch={onSearch}
       onRowsPerPageChange={onRowsPerPageChange}
+      exportHref="/api/fxp/export-to-excel"
     >
       {
         data.map(item => (

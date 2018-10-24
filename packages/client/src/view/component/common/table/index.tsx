@@ -8,6 +8,8 @@ import {
   TableBody,
   TableRow,
   Theme,
+  IconButton,
+  Tooltip,
 } from '@material-ui/core';
 import MaterialTable from '@material-ui/core/Table';
 import classNames from 'classnames';
@@ -22,6 +24,7 @@ import {
   TOnPageChange,
   TOnRowsPerPageChange,
 } from 'client/src/view/component/common/table/typings';
+import ExportIcon from '@material-ui/icons/CloudDownloadSharp';
 import { TableFilter } from 'client/src/view/component/common/table/table-filter';
 import { SearchBar } from 'client/src/view/component/common/search-bar';
 import { TOnValueChange as TOnSearch } from 'client/src/view/component/common/search-bar/typings';
@@ -35,7 +38,7 @@ const styles = (theme: Theme) => createStyles({
     alignItems: 'center',
   },
   horizontalContainer: {
-    width: '800px',
+    width: '900px',
     maxWidth: '90vw',
   },
   verticalContainer: {
@@ -78,6 +81,7 @@ interface TableProps extends WithStyles<typeof styles> {
   onToggleFilter: TOnToggleFilter;
   onSearch: TOnSearch;
   onRowsPerPageChange: TOnRowsPerPageChange;
+  exportHref?: string;
 }
 
 class TableClass extends Component<TableProps> {
@@ -102,6 +106,22 @@ class TableClass extends Component<TableProps> {
         />
       </div>
     );
+  }
+
+  renderExportIcon() {
+    const { exportHref } = this.props;
+
+    if (exportHref) {
+      return (
+        <Tooltip title="Export to excel">
+          <IconButton href={exportHref}>
+            <ExportIcon />
+          </IconButton>
+        </Tooltip>
+      );
+    } else {
+      return null;
+    }
   }
 
   renderTableFilter() {
@@ -162,6 +182,7 @@ class TableClass extends Component<TableProps> {
         <div className={classNames(classes.horizontalContainer, classes.topBarContainer)}>
           {this.renderSearchBar()}
           {this.renderTableFilter()}
+          {this.renderExportIcon()}
         </div>
         <Paper className={classNames(classes.horizontalContainer, classes.tableDataContainer)}>
           <MaterialTable className={classes.table} aria-labelledby="tableTitle" component="div">

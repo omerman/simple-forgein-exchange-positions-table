@@ -2,11 +2,9 @@ import fetch from 'node-fetch';
 import { IRates } from 'src/rates-manager/typings';
 
 export const ratesManager = {
-  get(): Promise<IRates> {
-    return (
-      fetch('https://ratesapi.io/api/latest?base=USD')
-        .then(response => response.json())
-        .then(responseData => responseData.rates)
-    );
+  async get(): Promise<IRates> {
+    const response = await fetch('https://ratesapi.io/api/latest?base=USD');
+    const responseData = await response.json();
+    return responseData.rates;
   },
 };

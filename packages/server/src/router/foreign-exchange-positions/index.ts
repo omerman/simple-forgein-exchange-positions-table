@@ -1,33 +1,24 @@
 import { Router } from 'express';
-import { ratesManager } from 'src/rates-manager';
-import { finantialUnitsManager } from 'src/finantial-units-manager';
-import { positionsManager } from 'src/positions-manager';
+import { foreignExchangePositionsManager } from 'src/forgein-exchange-positions-manager';
 import { IForgeinExchangePosition } from 'src/shared-typings';
+import { toExcelSheet } from 'src/forgein-exchange-positions-manager/to-excel-sheet';
 
 export const foreignExchangePositionsRouter = Router();
 
 foreignExchangePositionsRouter.get('/', async (req, res) => {
-  const [rates, finantialUnits, positions] = await Promise.all([
-    ratesManager.get(),
-    finantialUnitsManager.get(),
-    positionsManager.get(),
-  ]);
+  const fxPositions = await foreignExchangePositionsManager.get();
+  res.json(fxPositions);
+});
 
-  const calculatedValue: IForgeinExchangePosition[] = positions.map((position) => {
-    const finantialUnit = finantialUnits.find(fu => position.fuOriginId === fu.id);
+foreignExchangePositionsRouter.get('/export-to-excel', async (req, res) => {
+  const fxPositions = await foreignExchangePositionsManager.get();
 
-    return {
-      id: position.id,
-      name: finantialUnit.name,
-      notionalValue: position.data.currency.notionalValue,
-      rate: rates[position.data.currency.ccy],
-      currency: position.data.currency.ccy,
-      calculatedValue: (
-        position.data.currency.notionalValue * rates[position.data.currency.ccy]
-      ),
-    };
-  });
+  const sheet = toExcelSheet(fxPositions);
 
+  res.setHeader('Content-Type', 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
+  res.setHeader('Content-Disposition', `attachment; filename=${sheet.name}.xlsx`);
 
-  res.json(calculatedValue);
+  await sheet.workbook.xlsx.write(res);
+
+  res.end();
 });
